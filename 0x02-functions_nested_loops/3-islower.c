@@ -3,8 +3,8 @@
 /**
  *_islower - checks through the input for lowercase alpahbets
  *
- * int c - the alphabet
- *Return: 1 is return if 'c' is lowercase then returns 0 if 'c' isn't lowercase.
+ *@c: the alphabet
+ *Return: 1 is return if 'c' is lowercase then 0 otherwise.
  */
 int _islower(int c)
 {
