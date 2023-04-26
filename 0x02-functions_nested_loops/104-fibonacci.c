@@ -15,7 +15,7 @@ int main(void)
 		nxt = a + b;
 		a = b;
 		b = nxt;
-		print("%lu", nxt);
+		printf("%lu", nxt);
 
 		if (i < 97)
 			printf(", ");
@@ -24,3 +24,4 @@ int main(void)
 	putchar('\n');
 	return (0);
 }
+	
