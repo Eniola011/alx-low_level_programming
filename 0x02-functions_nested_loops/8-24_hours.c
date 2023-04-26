@@ -10,6 +10,8 @@ void jack_bauer(void)
 	int day;
 	int minut;
 
+	day = 0;
+
 	while (day < 24)
 	{
 		minut = 0;
