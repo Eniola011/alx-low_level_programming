@@ -4,6 +4,6 @@ Task 2: A function that returns the length of a string.
 Task 3: A function that returns the factorial of a given number.
 Task 4: A function that returns the value of x raised to the power of y.
 Task 5: A function that returns the natural square root of a number.
-Task 6:
+Task 6: A function that returns 1 if the input integer is a prime number, otherwise return 0.
 Task 7:
 Task 8:
