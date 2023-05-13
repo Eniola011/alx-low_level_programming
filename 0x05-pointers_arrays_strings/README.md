@@ -8,4 +8,6 @@ Task 6: A function that prints every other character of a string, starting with 
 Task 7: A function that prints half of a string, followed by a new line.
 Task 8: A function that prints n elements of an array of integers, followed by a new line.
 Task 9: A function that copies the string pointed to by src, including the terminating null byte (\0), to the buffer pointed to by dest.
+Task 10: A function that convert a string to an integer.
+Task 11: A program that generates random valid passwords for the program 101-crackme.
 
