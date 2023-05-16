@@ -13,22 +13,28 @@ char *_strdup(char *str)
 	char *ptr;
 	unsigned int i, n;
 
+	i = 0;
+	n = 0;
+
 	if (str == NULL)
 	{
 		return (NULL);
 	}
 
-	for (i = 0; str[i] != '\0'; i++)
+	while (str[n])
+	{
+		n++;
+	}
+	ptr = (char *)malloc(sizeof(char) * (n + 1));
 
-	ptr = (char *)malloc(sizeof(char) * (i + 1));
 	if (ptr == NULL)
 	{
 		return (NULL);
 	}
 
-	for (n = 0; n <= i; n++)
+	while ((ptr[i] = str[i]) != '\0')
 	{
-		ptr[n] = str[n];
+		i++;
 	}
 	return (ptr);
 }
