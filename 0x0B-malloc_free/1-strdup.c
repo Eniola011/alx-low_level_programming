@@ -4,7 +4,7 @@
 /**
  *_strdup -  returns a pointer to a
  *newly allocated space in memory
- * @str: string 
+ *@str: string
  *
  * Return: pointer array of char
  */
@@ -19,7 +19,7 @@ char *_strdup(char *str)
 	}
 
 	for (i = 0; str[i] != '\0'; i++)
-	
+
 	ptr = (char *)malloc(sizeof(char) * (i + 1));
 	if (ptr == NULL)
 	{
