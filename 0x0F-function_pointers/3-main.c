@@ -1,10 +1,9 @@
 #include "3-calc.h"
 
 /**
- * main - checks code in 3-op_functions.c
- * @argc: argument count.
- * @argv: argument vector.
- *
+ * main - checks code
+ * @argc: arg count.
+ * @argv: arg vector.
  * Return: 0
  */
 int main(int argc, char *argv[])
