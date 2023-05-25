@@ -51,3 +51,4 @@ task 3iv --> 3-main.c: This file should contain your main function only.
 	c. You have to use atoi to convert arguments to int
 	d. You are not allowed to use any kind of loop
 	e. You are allowed to use a maximum of 3 if statements
+Task 4: Write a program that prints the opcodes of its own main function.
