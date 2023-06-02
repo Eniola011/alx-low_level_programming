@@ -12,4 +12,5 @@ All six tasks were written in C language:
 | Task: 2 | Write a function that adds a new node at the beginning of a list_t list. |
 | Task: 3 | Write a function that adds a new node at the end of a list_t list. |
 | Task: 4 | Write a function that frees a list_t list. |
+| Task: 5 | Write a function that prints You're beat! and yet, you must allow,\nI bore my house upon my back!\n before the main function is executed. |
 
