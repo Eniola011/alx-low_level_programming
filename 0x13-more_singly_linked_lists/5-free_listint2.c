@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * free_listint - releases linkedlist
+ * free_listint2 - releases linkedlist
  * The function sets the head to NULL
  * @head: starting point of linked list
  * Return: no value.
@@ -12,7 +12,7 @@ void free_listint2(listint_t **head)
 
 	if (head == NULL)
 	{
-		return;
+		return (0);
 	}
 
 	while (*head != NULL)
@@ -21,5 +21,6 @@ void free_listint2(listint_t **head)
 		*head = (*head)->next;
 		free(_temp);
 	}
+
 	*head = NULL;
 }
