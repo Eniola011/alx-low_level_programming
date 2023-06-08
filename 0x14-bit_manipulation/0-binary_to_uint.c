@@ -11,27 +11,32 @@
 
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int digit = 0;
-	unsigned int num = 0;
+	unsigned int digit; /* converted number */
+	int i; /* length of char */
+	int _base2;/* raise to power two */
 
-	if (!digit)
+	if (!b)
 	{
 		return (0);
 	}
 
-	while (b[digit])
+	digit = 0;
+
+	for (i = 0; b[i] != '\0'; i++)
+		;
+
+	for (i--, _base2 = 1; i >= 0; i--, _base2 *= 2)
 	{
-		if (b[digit] == '0' || b[digit] == '1')
-		{
-			num <<= 1;
-			num += b[digit] - '0';
-			digit++;
-		}
-		else
+		if (b[i] != '0' && b[i] != '1')
 		{
 			return (0);
 		}
+
+		if (b[i] & 1)
+		{
+			digit += _base2;
+		}
 	}
-	
-	return (num);
+
+	return (digit);
 }
