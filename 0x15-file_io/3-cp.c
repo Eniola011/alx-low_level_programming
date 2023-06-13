@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 char *do_buffer(char *_file);
-void closefile(int _file);
+void closefile(int fp);
 
 /**
  * do_buffer - gives 1024 bytes for buffer
@@ -18,8 +18,7 @@ char *do_buffer(char *_file)
 
 	if (_buffer == NULL)
 	{
-		dprintf(STDERR_FILENO,
-			"Error: Can't write to %s\n", _file);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", _file);
 		exit(99);
 	}
 
@@ -28,18 +27,17 @@ char *do_buffer(char *_file)
 
 /**
  * closefile - function to close file
- * @_file: name of file to be closed
+ * @fp: name of file to be closed
  */
-void closefile(int _file)
+void closefile(int fp)
 {
 	int cf;
 
-	cf = close(_file);
+	cf = close(fp);
 
 	if (cf == -1)
 	{
-		dprintf(STDERR_FILENO,
-			"Error: Can't close file %d\n", _file);
+		dprintf(STDERR_FILENO, "Error: Can't close file %d\n", fp);
 		exit(100);
 	}
 }
