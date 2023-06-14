@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *do_buffer(char *_file);
-void closefile(int fp);
 
 /**
  * do_buffer - gives 1024 bytes for buffer
