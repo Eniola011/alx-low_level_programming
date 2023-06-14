@@ -1,97 +1,72 @@
 #include "main.h"
 #include <stdio.h>
-#include <stdlib.h>
-
 
 /**
- * do_buffer - gives 1024 bytes for buffer
- * @_file: name of file
- * Return: pointer to new buffer
+ * canopen_file - finds out if files can be opened.
+ * @file_from: name of file
+ * @file_to: name of file
+ * @argv: args vector.
+ * Return: no value
  */
-char *do_buffer(char *_file)
+void canopen_file(int file_from, int file_to, char *argv[])
 {
-	char *_buffer;
-
-	_buffer = malloc(sizeof(char) * 1024);
-
-	if (_buffer == NULL)
+	if (file_from == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", _file);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	if (file_to == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
-
-	return (_buffer);
 }
 
 /**
- * closefile - function to close file
- * @fp: name of file to be closed
- */
-void closefile(int fp)
-{
-	int cf;
-
-	cf = close(fp);
-
-	if (cf == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close file %d\n", fp);
-		exit(100);
-	}
-}
-
-/**
- * main - copies the contents of a file to another file.
+ * main - cross checks code
  * @argc: arg count
- * @argv: array pointer of arg
- * Return: success(0)
- * Description: If arg count is incorrect (exit code 97)
- * if file_from doesnt exist or cant be read (exit code 98)
- * if file_to cant be created or writtten (exit code 99)
- * if file_to/file_from cant be closed (exit code 100)
+ * @argv: arg vector.
+ * Return: 0
  */
 int main(int argc, char *argv[])
 {
-	int _from, _to, _read, _write;
-	char *_buffer;
+	int file_from, file_to, cant_close;
+	ssize_t data, _write;
+	char _buffer[1024];
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
 		exit(97);
 	}
 
-	_buffer = do_buffer(argv[2]);
-	_from = open(argv[1], O_RDONLY);
-	_read = read(_from, _buffer, 1024);
-	_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	file_from = open(argv[1], O_RDONLY);
+	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
+	canopen_file(file_from, file_to, argv);
 
-	do {
-		if (_from == -1 || _read == -1)
-		{
-			dprintf(STDERR_FILENO,
-				"Error: Can't read from file %s\n", argv[1]);
-			free(_buffer);
-			exit(98);
-		}
+	data = 1024;
+	while (data == 1024)
+	{
+		data = read(file_from, _buffer, 1024);
+		if (data == -1)
+			canopen_file(-1, 0, argv);
+		_write = write(file_to, _buffer, data);
+		if (_write == -1)
+			canopen_file(0, -1, argv);
+	}
 
-		_write = write(_to, _buffer, _read);
-		if (_to == -1 || _write == -1)
-		{
-			dprintf(STDERR_FILENO,
-				"Error: Can't write to %s\n", argv[2]);
-			free(_buffer);
-			exit(99);
-		}
+	cant_close = close(file_from);
+	if (cant_close == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
+		exit(100);
+	}
 
-		_read = read(_from, _buffer, 1024);
-		_to = open(argv[2], O_WRONLY | O_APPEND);
-
-	} while (_read > 0);
-
-	free(_buffer);
-	closefile(_from);
-	closefile(_to);
-
+	cant_close = close(file_to);
+	if (cant_close == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
+		exit(100);
+	}
 	return (0);
 }
