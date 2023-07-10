@@ -251,7 +251,7 @@ void elf_entry(unsigned long int e_entry, unsigned char *e_ident)
 }
 
 /**
- * close_elf - Closes an elf file.
+ * elf_close - Closes an elf file.
  * @elf: file descriptor
  *
  * Return: no value
