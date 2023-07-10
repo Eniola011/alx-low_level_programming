@@ -1,0 +1,2 @@
+C language is hard
+File I/O topic.

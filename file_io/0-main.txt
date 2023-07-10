@@ -1,0 +1,2 @@
+This is a text file.
+C language is hard.
