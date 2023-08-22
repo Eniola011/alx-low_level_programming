@@ -3,7 +3,6 @@
 
 #define EXIT_SUCCESS 0
 
-
 int _putchar(char);
 int _islower(int c);
 int _isalpha(int c);
@@ -24,5 +23,10 @@ char *_strchr(char *s, char c);
 unsigned int _strspn(char *s, char *accept);
 char *_strpbrk(char *s, char *accept);
 char *_strstr(char *haystack, char *needle);
+int add(int i, int j);
+int sub(int i, int j);
+int mul(int a, int b);
+int div(int a, int b);
+int mod(int a, int b);
 
 #endif
