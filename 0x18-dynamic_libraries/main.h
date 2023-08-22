@@ -1,5 +1,8 @@
-#ifndef main_h
-#define main_h
+#ifndef MAIN_H
+#define MAIN_H
+
+#define EXIT_SUCCESS 0
+
 
 int _putchar(char);
 int _islower(int c);
