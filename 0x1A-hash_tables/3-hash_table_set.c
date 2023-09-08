@@ -1,13 +1,13 @@
 #include "hash_tables.h"
 
 /**
- * add_nodehash - a function that adds a new node at the beginning
+ * add_nodeh - a function that adds a new node at the beginning
  * @head: a double pointer head of doublylinked list(beginning point)
  * @key: key of the hash table
  * @value: data that the list should contain
  * Return: head of the hash
  */
-hash_node_t *add_nodehash(hash_node_t **head, const char *key, const char *value)
+hash_node_t *add_nodeh(hash_node_t **head, const char *key, const char *value)
 {
 	hash_node_t *newnode;
 
@@ -60,7 +60,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	key_idx = key_index((unsigned char *)key, ht->size);
 
-	if (add_nodehash(&(ht->array[key_idx]), key, value) == NULL)
+	if (add_nodeh(&(ht->array[key_idx]), key, value) == NULL)
 	{
 		return (0);
 	}
