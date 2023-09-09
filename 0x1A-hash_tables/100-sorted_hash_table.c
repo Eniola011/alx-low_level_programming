@@ -101,13 +101,9 @@ void add_anode(shash_table_t *ht, shash_node_t *newnode)
 			newnode->sprev = tempnode1->sprev;
 
 			if (tempnode1->sprev)
-			{
 				tempnode1->sprev->snext = newnode;
-			}
 			else
-			{
 				ht->shead = newnode;
-			}
 
 			tempnode1->sprev = newnode;
 			newnode->snext = tempnode1;
@@ -123,14 +119,9 @@ void add_anode(shash_table_t *ht, shash_node_t *newnode)
 	newnode->snext = NULL;
 
 	if (ht->shead)
-	{
 		tempnode2->snext = newnode;
-	}
 	else
-	{
 		ht->shead = newnode;
-	}
-
 	ht->stail = newnode;
 }
 
